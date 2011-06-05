@@ -1,0 +1,30 @@
+Name:                digestive-functors-heist
+Version:             0.1
+Synopsis:            Heist frontend for Digestive-functors
+-- Description:         
+Homepage:            https://github.com/dbp/digestive-functors-heist
+License:             BSD3
+License-file:        LICENSE
+Author:              Daniel Patterson
+Maintainer:          dbp@riseup.net
+-- Copyright:           
+Category:            Web
+Build-type:          Simple
+-- Extra-source-files:  
+Cabal-version:       >=1.2
+
+Library
+  Exposed-modules: Text.Digestive.Heist    
+  Build-depends: 
+    base >= 4 && < 5,
+    digestive-functors == 0.1.0.*,
+    digestive-functors-snap-heist == 0.1.0.*,
+    xmlhtml >= 0.1 && <= 0.2,
+    heist >= 0.5 && <= 0.6,
+    text >= 0.11 && <= 0.12,
+    bytestring >= 0.9 && < 0.10,
+    mtl >= 2.0.0.0 && < 3,
+    containers
+
+  -- Other-modules:       
+  -- Build-tools:         
