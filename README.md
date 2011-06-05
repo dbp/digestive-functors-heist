@@ -12,26 +12,26 @@ What is set, and ideally should not change, is the actual interface for using th
 Also, right now you need to explicitly set the field name when specifying the errors as well. That should change, with a relatively simple implementation.
 
 ## Usage
-import Text.Digestive.Types
-import Text.Digestive.Backend.Snap.Heist
-import Text.Digestive.Validate
-import Text.Digestive.Heist
-import Text.Templating.Heist
-
-import Application
-
-data NewPassword = NewPassword String String String deriving (Eq,Show)
-
-passwordForm :: SnapForm Application Text [(Text, Splice Application)] NewPassword
-passwordForm = NewPassword
-    <$> input "current" Nothing  `validate` checkPassword <++ errors "current"
-    <*> input "new"     Nothing  `validate` nonEmpty      <++ errors "new"
-    <*> input "confirm" Nothing  `validate` nonEmpty      <++ errors "confirm"
+    import Text.Digestive.Types
+    import Text.Digestive.Backend.Snap.Heist
+    import Text.Digestive.Validate
+    import Text.Digestive.Heist
+    import Text.Templating.Heist
     
-changePasswordH = do r <- eitherSnapForm passwordForm "change-password-form"
-                     case r of
-                         Left splices' -> do
-                           heistLocal (bindSplices splices') $ render "profile/usersettings/password"
-                         Right password' -> do
-                           render "profile/usersettings/password"
+    import Application
+    
+    data NewPassword = NewPassword String String String deriving (Eq,Show)
+    
+    passwordForm :: SnapForm Application Text [(Text, Splice Application)] NewPassword
+    passwordForm = NewPassword
+        <$> input "current" Nothing  `validate` checkPassword <++ errors "current"
+        <*> input "new"     Nothing  `validate` nonEmpty      <++ errors "new"
+        <*> input "confirm" Nothing  `validate` nonEmpty      <++ errors "confirm"
+        
+    changePasswordH = do r <- eitherSnapForm passwordForm "change-password-form"
+                         case r of
+                             Left splices' -> do
+                               heistLocal (bindSplices splices') $ render "profile/usersettings/password"
+                             Right password' -> do
+                               render "profile/usersettings/password"
 
