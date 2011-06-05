@@ -35,3 +35,19 @@ Also, right now you need to explicitly set the field name when specifying the er
                              Right password' -> do
                                render "profile/usersettings/password"
 
+    <h3>Change Password</h3>
+    <form-async action="/settings/password">
+      <table>
+        <tr><td class="label"><label for="current">Current:</label></td> <td><input name="current" type="password" />
+          Value: <current-value/>
+          </td></tr>
+        <tr><td class="label"><label for="new">New:</label></td> <td><input name="new" type="password" />
+          Value: <new-value/>
+          Errors: <new-error><error/></new-error></td></tr>
+        <tr><td class="label"><label for="confirm">Confirm:</label></td> <td><input name="confirm" type="password" />
+          Value: <confirm-value/>
+          Errors: <confirm-error><error/></confirm-error>
+          <button type="submit" title=""/></td></tr>
+      </table>
+    </form-async>
+
