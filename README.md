@@ -1,5 +1,8 @@
 # Digestive functors for heist
 
+# Deprecated in favor of combined library:
+https://github.com/dbp/digestive-functors-snap-heist
+
 ## Comments on current state of the library
 Right now, this only works with the specific snap backend that was built for it, at https://github.com/dbp/digestive-functors-snap-heist . This is due to a limitation in digestive-functors that prevents us from requesting a piece of the environment in any way other than using a field name like "prefix-fval[1]" or in the case of subforms "prefix-fval[1.1]". This is used to great effect by other frontend / backends, like Blaze, but means that the only way (thus for identified) of being able to get a field by name is to have the environment give back the entire params map (in response to a request for any param) and then have the frontend find the value in that. This means that the frontend depends on the backend behaving in a sort of funny way, which is why it needs to use the special backend built for it.
 
